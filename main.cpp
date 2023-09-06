@@ -39,6 +39,14 @@ void displayStudents(const std::vector<Student>& database) {
 // Функция для для вычисления количества студентов в базе данных
 int countStudents(const std::vector<Student>& database) {
 
+    if (database.empty()) { return 0; }
+
+    int count = 0;
+    
+    for (const Student& student : database) {
+        count++;
+    }
+
 }
 
 int main() {
