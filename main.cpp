@@ -36,6 +36,31 @@ void displayStudents(const std::vector<Student>& database) {
     }
 }
 
+// Функция для поиска студента по имени или по специальности
+void searchStudents(const std::vector<Student>& database) {
+    std::vector<Student> results;
+    std::string query;
+    std::cout << "Введите имя или специальность студента: ";
+    std::cin >> query;
+    for (const Student& student : database) {
+        if (student.name.find(query) != std::string::npos)
+            results.push_back(student);
+        else if (student.major.find(query) != std::string::npos) {
+            results.push_back(student);
+        }
+    }
+    if (results.empty()) {
+        std::cout << "Нет совпадений." << std::endl;
+    }
+    else
+    {
+        std::cout << "Результаты поиска:" << std::endl;
+        for (const Student& student : results) {
+            std::cout << "Имя: " << student.name << ", Специальность: " << student.major << std::endl;
+        }
+    }
+}
+
 int main() {
     std::vector<Student> database;
 
@@ -44,22 +69,26 @@ int main() {
         std::cout << "Меню:\n";
         std::cout << "1. Добавить студента\n";
         std::cout << "2. Вывести список студентов\n";
+        std::cout << "3. Найти стдудента по имени или специальности\n";
         std::cout << "0. Выход\n";
         std::cout << "Выберите действие: ";
         std::cin >> choice;
 
         switch (choice) {
-            case 1:
-                addStudent(database);
-                break;
-            case 2:
-                displayStudents(database);
-                break;
-            case 0:
-                std::cout << "Выход из программы.\n";
-                break;
-            default:
-                std::cout << "Неверный выбор. Попробуйте снова.\n";
+        case 1:
+            addStudent(database);
+            break;
+        case 2:
+            displayStudents(database);
+            break;
+        case 3:
+            searchStudents(database);
+            break;
+        case 0:
+            std::cout << "Выход из программы.\n";
+            break;
+        default:
+            std::cout << "Неверный выбор. Попробуйте снова.\n";
         }
     } while (choice != 0);
 
