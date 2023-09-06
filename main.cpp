@@ -84,6 +84,7 @@ void testFunction2(std::vector<Student>& database) {
     database.push_back(student);
     displayStudentsInAlphabetOrder(database);
 }
+
 // Тест на добавление слов в обратном алфавитном порядке
 void testFunction3(std::vector<Student>& database) {
    Student student;
@@ -112,7 +113,16 @@ void testFunction4(std::vector<Student>& database) {
     displayStudentsInAlphabetOrder(database);
 }
 
+// Тест на добавление разных имен
 void testFunction5(std::vector<Student>& database) {
+    student.name = "киря";
+    database.push_back(student);
+    
+    student.name = "тоха";
+    database.push_back(student);
+    
+    student.name = "мотя";
+    database.push_back(student);
 }
 
 int main() {
