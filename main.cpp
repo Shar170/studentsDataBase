@@ -9,6 +9,7 @@ struct Student {
     int age;
     string major;
     double gpa;
+	int group;
 };
 
 // Функция для добавления студента в базу данных
@@ -40,6 +41,7 @@ void displayStudents(const vector<Student>& database) {
 
 int main() {
     vector<Student> database;
+	vector<int> groups = { 1, 2, 3 }; 
 
     int choice;
     do {
