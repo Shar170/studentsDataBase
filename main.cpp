@@ -7,6 +7,15 @@ struct Student {
     int age;
     std::string major;
     double gpa;
+
+    Student() { }
+
+    Student(std::string data[4]) {
+        name = data[0];
+        age = std::stoi(data[1]);
+        major = data[2];
+        gpa = std::stoi(data[3]);
+    }
 };
 
 // Функция для добавления студента в базу данных
@@ -36,7 +45,54 @@ void displayStudents(const std::vector<Student>& database) {
     }
 }
 
+void readDataFromCSVFile(std::vector<Student>& database) {
+    std::cout << "Введите название файла: ";
+    std::string filename;
+    std::cin >> filename;
+    std::cout << std::endl;
+
+
+    char delimiter = ',';
+    std::string line;
+
+
+
+    std::ifstream file(filename);
+
+    while (std::getline(file, line)) {
+        std::stringstream stream(line);
+
+        std::string student_data[4];
+        std::getline(stream, student_data[0], delimiter);
+        std::getline(stream, student_data[1], delimiter);
+        std::getline(stream, student_data[2], delimiter);
+        std::getline(stream, student_data[3], delimiter);
+
+        Student student(student_data);
+        database.push_back(student);
+    }
+
+    file.close();
+}
+
+void getDatabaseCSVFile(const std::vector<Student>& database) {
+    std::cout << "Выгрузка началась...\n";
+
+    std::ofstream file("Выгрузка.csv");
+    for (Student student : database) {
+        file << student.name << ','
+            << student.age << ','
+            << student.major << ','
+            << student.gpa << std::endl;
+    }
+
+    file.close();
+
+}
+
 int main() {
+    setlocale(LC_ALL, "RU");
+
     std::vector<Student> database;
 
     int choice;
@@ -44,6 +100,8 @@ int main() {
         std::cout << "Меню:\n";
         std::cout << "1. Добавить студента\n";
         std::cout << "2. Вывести список студентов\n";
+        std::cout << "3. Загрузить студентов из файла\n";
+        std::cout << "4. Выгрузить данные в файл\n";
         std::cout << "0. Выход\n";
         std::cout << "Выберите действие: ";
         std::cin >> choice;
@@ -54,6 +112,12 @@ int main() {
                 break;
             case 2:
                 displayStudents(database);
+                break;
+            case 3:
+                readDataFromCSVFile(database);
+                break;
+            case 4:
+                getDatabaseCSVFile(database);
                 break;
             case 0:
                 std::cout << "Выход из программы.\n";
