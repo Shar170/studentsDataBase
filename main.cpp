@@ -37,6 +37,7 @@ void displayStudents(const std::vector<Student>& database) {
 }
 
 int main() {
+    setlocale(LC_ALL, "ru");
     std::vector<Student> database;
 
     int choice;
