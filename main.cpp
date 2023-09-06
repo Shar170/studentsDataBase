@@ -6,6 +6,7 @@ struct Student {
     std::string name;
     int age;
     std::string major;
+    int averageScore;
     double gpa;
 };
 
