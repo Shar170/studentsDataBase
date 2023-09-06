@@ -53,6 +53,17 @@ void displayStudentsInAlphabetOrder(const std::vector<Student>& database) {
   displayStudents(right_database);
 }
 
+void testFunction1(const std::vector<Student>& database) {
+}
+void testFunction2(const std::vector<Student>& database) {
+}
+void testFunction3(const std::vector<Student>& database) {
+}
+void testFunction4(const std::vector<Student>& database) {
+}
+void testFunction5(const std::vector<Student>& database) {
+}
+
 int main() {
     std::vector<Student> database;
 
