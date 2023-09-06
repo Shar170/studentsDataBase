@@ -6,7 +6,7 @@ struct Student {
     std::string name;
     int age;
     std::string major;
-    int averageScore;
+    double averageScore;
     double gpa;
 };
 
@@ -35,6 +35,11 @@ void displayStudents(const std::vector<Student>& database) {
         std::cout << "Специальность: " << student.major << "\n";
         std::cout << "Средний балл: " << student.gpa << "\n\n";
     }
+}
+
+//Фукция для подсчета суммы всех средних баллов студентов
+double averageScoreSum(const std::vector<Student>& database) {
+
 }
 
 int main() {
