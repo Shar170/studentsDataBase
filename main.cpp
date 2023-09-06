@@ -4,17 +4,20 @@
 
 using namespace std;
 
+vector<string> groups = {"КС-40", "КС-43", "КС-46"};
+
 struct Student {
     string name;
     int age;
     string major;
     double gpa;
-	int group;
+	string group;
 };
 
 // Функция для добавления студента в базу данных
 void addStudent(vector<Student>& database) {
     Student student;
+	int group_number;
     cout << "Введите имя студента: ";
     cin >> student.name;
     cout << "Введите возраст студента: ";
@@ -23,7 +26,15 @@ void addStudent(vector<Student>& database) {
     cin >> student.major;
     cout << "Введите средний балл студента: ";
     cin >> student.gpa;
-
+	cout << "Выберите группу студента: " << "\n";
+	for (int i = 1; i <= groups.size(); i++)
+		cout << i << ". " << groups[i - 1] << "\n";
+	cin >> group_number; 
+	while (group_number < 1 || group_number > groups.size()) {
+		cout << "Введите правильный номер: ";
+		cin >> group_number; 
+	}
+	student.group = groups[group_number - 1];
     database.push_back(student);
     cout << "Студент добавлен в базу данных.\n";
 }
@@ -35,13 +46,13 @@ void displayStudents(const vector<Student>& database) {
         cout << "Имя: " << student.name << "\n";
         cout << "Возраст: " << student.age << "\n";
         cout << "Специальность: " << student.major << "\n";
-        cout << "Средний балл: " << student.gpa << "\n\n";
+        cout << "Средний балл: " << student.gpa << "\n";
+		cout << "Группа: " << student.group << "\n\n";
     }
 }
 
 int main() {
     vector<Student> database;
-	vector<int> groups = {1, 2, 3};
 
     int choice;
     do {
