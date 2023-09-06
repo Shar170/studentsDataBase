@@ -47,6 +47,7 @@ int countStudents(const std::vector<Student>& database) {
         count++;
     }
 
+    std::cout << "Количество студентов: " << count << "\n\n";
 }
 
 int main() {
