@@ -53,15 +53,29 @@ void displayStudentsInAlphabetOrder(const std::vector<Student>& database) {
   displayStudents(right_database);
 }
 
-void testFunction1(const std::vector<Student>& database) {
+void testFunction1(std::vector<Student>& database) {
+    Student student;
+    student.name = "владлен";
+    student.age = 0;
+    student.major = "марксист";
+    student.gpa = 1;
+    database.push_back(student);
+
+    student.name = "владимир";
+    student.age = 70;
+    student.major = "политик";
+    student.gpa = 3;
+    database.push_back(student);
+
+    displayStudentsInAlphabetOrder(database);
 }
-void testFunction2(const std::vector<Student>& database) {
+void testFunction2(std::vector<Student>& database) {
 }
-void testFunction3(const std::vector<Student>& database) {
+void testFunction3(std::vector<Student>& database) {
 }
-void testFunction4(const std::vector<Student>& database) {
+void testFunction4(std::vector<Student>& database) {
 }
-void testFunction5(const std::vector<Student>& database) {
+void testFunction5(std::vector<Student>& database) {
 }
 
 int main() {
@@ -72,7 +86,8 @@ int main() {
         std::cout << "Меню:\n";
         std::cout << "1. Добавить студента\n";
         std::cout << "2. Вывести список студентов\n";
-        std::cout << "3. Вывести список студентов в алвафитном порядке\n";
+        std::cout << "17. Вывести список студентов в алвафитном порядке\n";
+        std::cout << "4. Тестик\n";
         std::cout << "0. Выход\n";
         std::cout << "Выберите действие: ";
         std::cin >> choice;
@@ -84,8 +99,11 @@ int main() {
             case 2:
                 displayStudents(database);
                 break;
-            case 3:
+            case 17:
                 displayStudentsInAlphabetOrder(database);
+                break;
+            case 4:
+                testFunction1(database);
                 break;
             case 0:
                 std::cout << "Выход из программы.\n";
