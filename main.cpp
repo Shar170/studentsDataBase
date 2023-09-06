@@ -41,7 +41,7 @@ void displayStudents(const vector<Student>& database) {
 
 int main() {
     vector<Student> database;
-	vector<int> groups = { 1, 2, 3 }; 
+	vector<int> groups = {1, 2, 3};
 
     int choice;
     do {
