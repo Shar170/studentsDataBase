@@ -39,7 +39,12 @@ void displayStudents(const std::vector<Student>& database) {
 
 //Фукция для подсчета суммы всех средних баллов студентов
 double averageScoreSum(const std::vector<Student>& database) {
+    double sum = 0;
 
+    for (const Student& student : database) {
+        sum += student.averageScore;
+    }
+    return sum;
 }
 
 int main() {
