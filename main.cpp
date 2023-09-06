@@ -36,6 +36,23 @@ void displayStudents(const std::vector<Student>& database) {
     }
 }
 
+// Фцнкция для вывода всех студенов из базы данных в алфавитном порядке
+void displayStudentsInAlphabetOrder(const std::vector<Student>& database) {
+    std::vector<Student> right_database = database;
+    std::cout << "Список студентов:\n";\
+    int size = right_database.size(); 
+     for (int step = 0; step < size; ++step) {
+        for (int i = 0; i < size - step; ++i) {
+             if (right_database[i].name > right_database[i + 1].name) {
+        int temp = right_database[i].name[i];
+        right_database[i].name[i] = right_database[i].name[i + 1];
+        right_database[i].name[i + 1] = temp;
+      }
+    }
+  }
+  displayStudents(right_database);
+}
+
 int main() {
     std::vector<Student> database;
 
@@ -44,6 +61,7 @@ int main() {
         std::cout << "Меню:\n";
         std::cout << "1. Добавить студента\n";
         std::cout << "2. Вывести список студентов\n";
+        std::cout << "3. Вывести список студентов в алвафитном порядке\n";
         std::cout << "0. Выход\n";
         std::cout << "Выберите действие: ";
         std::cin >> choice;
@@ -54,6 +72,9 @@ int main() {
                 break;
             case 2:
                 displayStudents(database);
+                break;
+            case 3:
+                displayStudentsInAlphabetOrder(database);
                 break;
             case 0:
                 std::cout << "Выход из программы.\n";
