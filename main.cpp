@@ -53,6 +53,7 @@ void displayStudentsInAlphabetOrder(const std::vector<Student>& database) {
   displayStudents(right_database);
 }
 
+// Пробный тест функции
 void testFunction1(std::vector<Student>& database) {
     Student student;
     student.name = "владлен";
@@ -69,12 +70,48 @@ void testFunction1(std::vector<Student>& database) {
 
     displayStudentsInAlphabetOrder(database);
 }
+// Тест на несколько слов со схожими первыми буквами
 void testFunction2(std::vector<Student>& database) {
+    Student student;
+    student.name = "катамаран";
+    
+    database.push_back(student);
+    
+    student.name = "катафалк";
+    database.push_back(student);
+    
+    student.name = "картон";
+    database.push_back(student);
+    displayStudentsInAlphabetOrder(database);
 }
+// Тест на добавление слов в обратном алфавитном порядке
 void testFunction3(std::vector<Student>& database) {
+   Student student;
+    student.name = "ярило";
+    database.push_back(student);
+    
+    student.name = "орило";
+    database.push_back(student);
+    
+    student.name = "антон";
+    database.push_back(student);
+    displayStudentsInAlphabetOrder(database);
 }
+
+// Тест на добавление двух одинаковых и одного отличного имени
 void testFunction4(std::vector<Student>& database) {
+    student.name = "киря";
+    database.push_back(student);
+    
+    student.name = "тоха";
+    database.push_back(student);
+    
+    student.name = "киря";
+    database.push_back(student);
+    
+    displayStudentsInAlphabetOrder(database);
 }
+
 void testFunction5(std::vector<Student>& database) {
 }
 
