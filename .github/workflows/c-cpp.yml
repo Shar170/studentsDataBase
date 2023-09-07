@@ -16,6 +16,6 @@ jobs:
     - name: installation
       run: sudo apt install -y googletest libgtest-dev build-essential gcovr
     - name: make
-      run: Tests/Makefile
+      run: make
     - name: execute
       run: ./program.out
