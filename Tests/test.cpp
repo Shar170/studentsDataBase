@@ -1,6 +1,13 @@
 #include "pch.h"
 #include "database.h"
 
+//Test without students
+TEST(ConsoleApplication2, averageScoreTestingNoStudents) {
+	std::vector<Student> database;
+
+	EXPECT_EQ(averageScoreSum(database), 0);
+}
+
 //Test with one student
 TEST(ConsoleApplication2, averageScoreTestingOneStudent) {
 	std::vector<Student> database;
