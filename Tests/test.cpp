@@ -2,14 +2,14 @@
 #include "database.h"
 
 //Test without students
-TEST(ConsoleApplication2, averageScoreTestingNoStudents) {
+TEST(DataBaseTesting, averageScoreTestingNoStudents) {
 	std::vector<Student> database;
 
 	EXPECT_EQ(averageScoreSum(database), 0);
 }
 
 //Test with one student
-TEST(ConsoleApplication2, averageScoreTestingOneStudent) {
+TEST(DataBaseTesting, averageScoreTestingOneStudent) {
 	std::vector<Student> database;
 	database.push_back({"", 5, "", 5 });
 
@@ -17,7 +17,7 @@ TEST(ConsoleApplication2, averageScoreTestingOneStudent) {
 }
 
 //Test with int average numbers
-TEST(ConsoleApplication2, averageScoreTestingInt) {
+TEST(DataBaseTesting, averageScoreTestingInt) {
 	std::vector<Student> database;
 	database.push_back({ "", 5, "", 5 });
 	database.push_back({ "", 5, "", 15 });
@@ -27,7 +27,7 @@ TEST(ConsoleApplication2, averageScoreTestingInt) {
 }
 
 //Test with double average numbers
-TEST(ConsoleApplication2, averageScoreTestingDouble) {
+TEST(DataBaseTesting, averageScoreTestingDouble) {
 	std::vector<Student> database;
 	database.push_back({ "", 5, "", 5.3 });
 	database.push_back({ "", 5, "", 15.8 });
@@ -37,7 +37,7 @@ TEST(ConsoleApplication2, averageScoreTestingDouble) {
 }
 
 //Test with double average numbers 10 students
-TEST(ConsoleApplication2, averageScoreTestingTenStudents) {
+TEST(DataBaseTesting, averageScoreTestingTenStudents) {
 	std::vector<Student> database;
 	Student student;
 	database.push_back({ "", 5, "", 5.83 });
@@ -55,7 +55,7 @@ TEST(ConsoleApplication2, averageScoreTestingTenStudents) {
 }
 
 //Test with double average numbers 20 students
-TEST(ConsoleApplication2, averageScoreTestingStudent) {
+TEST(DataBaseTesting, averageScoreTestingStudent) {
 	std::vector<Student> database;
 	database.push_back({ "", 5, "", 5.83 });
 	database.push_back({ "", 5, "", 15.798 });
