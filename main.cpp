@@ -6,7 +6,6 @@ struct Student {
     std::string name;
     int age;
     std::string major;
-    double averageScore;
     double gpa;
 };
 
@@ -42,7 +41,7 @@ double averageScoreSum(const std::vector<Student>& database) {
     double sum = 0;
 
     for (const Student& student : database) {
-        sum += student.averageScore;
+        sum += student.gpa;
     }
     return sum;
 }
