@@ -11,7 +11,7 @@ TEST(ConsoleApplication2, averageScoreTestingNoStudents) {
 //Test with one student
 TEST(ConsoleApplication2, averageScoreTestingOneStudent) {
 	std::vector<Student> database;
-	database.push_back({"", 5, "", 5, 1});
+	database.push_back({"", 5, "", 5 });
 
 	EXPECT_EQ(averageScoreSum(database), 5);
 }
