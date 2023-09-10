@@ -9,15 +9,28 @@ struct Student {
     int age;
     string major;
     double gpa;
-    int id;
 };
 
-int ids = 0;
-
-void deleteStudent(vector<Student>& database, int id)
+void deleteStudent(vector<Student>& database, string name)
 {
-   if(id > ids) return;
-   database.erase(database.begin() + id);
+    if (database.empty()) { cout << "The database is empty, the search for students is impossible!" << endl; return; };
+
+    int count = 0;
+
+    for (int i = 0; i < database.size(); i++)
+    {
+        if (database[i].name == name)
+        {
+            database.erase(database.begin() + i);
+            count++;
+            i--;
+        }
+    }
+
+    if (count == 0)
+    {
+        cout << "No matches found!" << endl;
+    }
 }
 
 // Функция для добавления студента в базу данных
@@ -31,10 +44,9 @@ void addStudent(vector<Student>& database) {
     cin >> student.major;
     cout << "Введите средний балл студента: ";
     cin >> student.gpa;
-    
-    student.id = ++ids;
 
     database.push_back(student);
+
     cout << "Студент добавлен в базу данных.\n";
 }
 
@@ -50,6 +62,9 @@ void displayStudents(const vector<Student>& database) {
 }
 
 int main() {
+
+    setlocale(LC_ALL, "ru");
+
     vector<Student> database;
 
     int choice;
@@ -62,22 +77,20 @@ int main() {
         cin >> choice;
 
         switch (choice) {
-            case 1:
-                addStudent(database);
-                break;
-            case 2:
-                displayStudents(database);
-                break;
-            case 0:
-                cout << "Выход из программы.\n";
-                break;
-            default:
-                cout << "Неверный выбор. Попробуйте снова.\n";
+        case 1:
+            addStudent(database);
+            break;
+        case 2:
+            displayStudents(database);
+            break;
+        case 0:
+            cout << "Выход из программы.\n";
+            break;
+        default:
+            cout << "Неверный выбор. Попробуйте снова.\n";
         }
     } while (choice != 0);
-    
-    deleteStudent(database, 1);
-    
+
     displayStudents(database);
 
     return 0;
