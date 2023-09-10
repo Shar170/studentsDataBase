@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 #include "gtest/gtest.h"
-#include "pch.h"
 
 using namespace std;
 
