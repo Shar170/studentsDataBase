@@ -39,23 +39,26 @@ void displayStudents(const std::vector<Student>& database) {
 // Фцнкция для вывода всех студенов из базы данных в алфавитном порядке
 void displayStudentsInAlphabetOrder(const std::vector<Student>& database) {
     std::vector<Student> right_database = database;
-    std::cout << "Список студентов:\n";\
-    int size = right_database.size(); 
-     for (int step = 0; step < size; ++step) {
+    std::cout << "Список студентов:\n"; \
+        int size = right_database.size() - 1;
+    for (int step = 0; step < size; ++step) {
         for (int i = 0; i < size - step; ++i) {
-             if (right_database[i].name > right_database[i + 1].name) {
-        int temp = right_database[i].name[i];
-        right_database[i].name[i] = right_database[i].name[i + 1];
-        right_database[i].name[i + 1] = temp;
-      }
+            if (right_database[i].name > right_database[i + 1].name) {
+                std::string temp = right_database[i].name;
+                right_database[i].name = right_database[i + 1].name;
+                right_database[i + 1].name = temp;
+            }
+        }
     }
-  }
-  displayStudents(right_database);
+    displayStudents(right_database);
 }
 
 // Пробный тест функции
 void testFunction1(std::vector<Student>& database) {
+    
     Student student;
+
+   
     student.name = "владлен";
     student.age = 0;
     student.major = "марксист";
@@ -68,18 +71,22 @@ void testFunction1(std::vector<Student>& database) {
     student.gpa = 3;
     database.push_back(student);
 
+  
+
+
+
     displayStudentsInAlphabetOrder(database);
 }
 // Тест на несколько слов со схожими первыми буквами
 void testFunction2(std::vector<Student>& database) {
     Student student;
     student.name = "катамаран";
-    
+
     database.push_back(student);
-    
+
     student.name = "катафалк";
     database.push_back(student);
-    
+
     student.name = "картон";
     database.push_back(student);
     displayStudentsInAlphabetOrder(database);
@@ -87,13 +94,13 @@ void testFunction2(std::vector<Student>& database) {
 
 // Тест на добавление слов в обратном алфавитном порядке
 void testFunction3(std::vector<Student>& database) {
-   Student student;
+    Student student;
     student.name = "ярило";
     database.push_back(student);
-    
+
     student.name = "орило";
     database.push_back(student);
-    
+
     student.name = "антон";
     database.push_back(student);
     displayStudentsInAlphabetOrder(database);
@@ -101,31 +108,34 @@ void testFunction3(std::vector<Student>& database) {
 
 // Тест на добавление двух одинаковых и одного отличного имени
 void testFunction4(std::vector<Student>& database) {
+    Student student;
     student.name = "киря";
     database.push_back(student);
-    
+
     student.name = "тоха";
     database.push_back(student);
-    
+
     student.name = "киря";
     database.push_back(student);
-    
+
     displayStudentsInAlphabetOrder(database);
 }
 
 // Тест на добавление разных имен
 void testFunction5(std::vector<Student>& database) {
+    Student student;
     student.name = "киря";
     database.push_back(student);
-    
+
     student.name = "тоха";
     database.push_back(student);
-    
+
     student.name = "мотя";
     database.push_back(student);
 }
 
 int main() {
+    setlocale(LC_ALL, "Russian");
     std::vector<Student> database;
 
     int choice;
@@ -140,23 +150,23 @@ int main() {
         std::cin >> choice;
 
         switch (choice) {
-            case 1:
-                addStudent(database);
-                break;
-            case 2:
-                displayStudents(database);
-                break;
-            case 17:
-                displayStudentsInAlphabetOrder(database);
-                break;
-            case 4:
-                testFunction1(database);
-                break;
-            case 0:
-                std::cout << "Выход из программы.\n";
-                break;
-            default:
-                std::cout << "Неверный выбор. Попробуйте снова.\n";
+        case 1:
+            addStudent(database);
+            break;
+        case 2:
+            displayStudents(database);
+            break;
+        case 17:
+            displayStudentsInAlphabetOrder(database);
+            break;
+        case 4:
+            testFunction3(database);
+            break;
+        case 0:
+            std::cout << "Выход из программы.\n";
+            break;
+        default:
+            std::cout << "Неверный выбор. Попробуйте снова.\n";
         }
     } while (choice != 0);
 
