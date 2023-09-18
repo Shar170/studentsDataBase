@@ -36,7 +36,14 @@ void displayStudents(const std::vector<Student>& database) {
     }
 }
 
+// Функция для для вычисления количества студентов в базе данных
+int countStudents(const std::vector<Student>& database) {
+
+    return database.size();
+}
+
 int main() {
+    setlocale(LC_ALL, "ru");
     std::vector<Student> database;
 
     int choice;
@@ -44,6 +51,7 @@ int main() {
         std::cout << "Меню:\n";
         std::cout << "1. Добавить студента\n";
         std::cout << "2. Вывести список студентов\n";
+        std::cout << "3. Вывести количество студентов\n";
         std::cout << "0. Выход\n";
         std::cout << "Выберите действие: ";
         std::cin >> choice;
@@ -54,6 +62,9 @@ int main() {
                 break;
             case 2:
                 displayStudents(database);
+                break;
+            case 3:
+                countStudents(database);
                 break;
             case 0:
                 std::cout << "Выход из программы.\n";
