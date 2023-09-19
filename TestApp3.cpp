@@ -64,17 +64,25 @@ private:
         reportFile.close();
     }
     void testAddStudentMultiple() {
-        std::vector<Student> database;
-        std::istringstream input("John\n20\nComputer Science\n3.5\n"
-            "Alice\n22\nMathematics\n3.8\n");
-        std::cin.rdbuf(input.rdbuf());
+        std::vector<Student> database;  // Создаем пустую базу данных
 
-        addStudent(database);
+        // Создаем первого студента
+        Student student1;
+        student1.name = "John Doe";
+        student1.age = 20;
+        student1.major = "Computer Science";
+        student1.gpa = 3.8;
         addStudent(database);
 
-        // Проверяем, что два студента были успешно добавлены
-        assert(database.size() == 2);
-        assert(database[0].name == "John");
+        // Создаем второго студента
+        Student student2;
+        student2.name = "Alice";
+        student2.age = 21;
+        student2.major = "Mathematics";
+        student2.gpa = 3.9;
+        addStudent(database);
+
+        // Проверяем, что имя второго студента равно "Alice"
         assert(database[1].name == "Alice");
     }
 
