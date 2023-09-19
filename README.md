@@ -1,3 +1,1 @@
-Name: Nikolai<br /> 
-Surname: Novikov<br />
-Group: KS-36
+Novikov Nikolai KS-36
