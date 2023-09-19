@@ -1,7 +1,10 @@
+#define TEST_MODE
+#include "main.cpp"
+#undef TEST_MODE
 #include <iostream>
 #include <vector>
 #include <string>
-#include "main.cpp"
+
 
 class Test {
 	private:
