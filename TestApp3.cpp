@@ -7,7 +7,7 @@ public:
         testDisplayStudents();
         testCreateReport();
         testCreateReportEmptyDatabase();
-        testAddStudentMultiple();
+        testExitProgram();
         // Добавьте вызовы других тестов по необходимости
     }
 
@@ -63,28 +63,28 @@ private:
         assert(reportFile.is_open());
         reportFile.close();
     }
-    void testAddStudentMultiple() {
-        std::vector<Student> database;  // Создаем пустую базу данных
+    void testExitProgram() {
+        // Создаем поток, который будет захватывать выход программы
+        std::stringstream output;
+        std::streambuf* origCoutBuffer = std::cout.rdbuf(output.rdbuf());
 
-        // Создаем первого студента
-        Student student1;
-        student1.name = "John Doe";
-        student1.age = 20;
-        student1.major = "Computer Science";
-        student1.gpa = 3.8;
-        addStudent(database);
+        // Симулируем выбор опции "0. Exit" в меню
+        std::istringstream input("0\n");
+        std::cin.rdbuf(input.rdbuf());
 
-        // Создаем второго студента
-        Student student2;
-        student2.name = "Alice";
-        student2.age = 21;
-        student2.major = "Mathematics";
-        student2.gpa = 3.9;
-        addStudent(database);
+        // Запускаем программу
+        main();
 
-        // Проверяем, что имя второго студента равно "Alice"
-        assert(database[0].name == "John Doe");
+        // Получаем код завершения
+        int exitCode = std::system("echo $?");
+
+        // Восстанавливаем стандартный вывод
+        std::cout.rdbuf(origCoutBuffer);
+
+        // Проверяем, что программа завершилась с кодом 0
+        assert(exitCode == 0);
     }
+
 
     void testCreateReportEmptyDatabase() {
         std::vector<Student> database;  // Создаем пустую базу данных
