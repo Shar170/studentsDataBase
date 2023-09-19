@@ -8,4 +8,4 @@ a.out: Test.cpp DataBase.h
     $(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
 
 clean:
-    rm -f a.out *.gc* coverage.info
+	rm -f a.out *.gc* coverage.info
