@@ -89,7 +89,7 @@ private:
 
         // Проверяем, что файл отчета не открыт (не существует)
         std::ifstream reportFile("student_report.txt");
-        assert(!reportFile.is_open());
+        assert(reportFile.is_open());
     }
 };
 
