@@ -21,6 +21,11 @@ private:
         student.age = 20;
         student.major = "Computer Science";  // Устанавливаем major в "Computer Science"
         student.gpa = 3.8;
+
+        // Добавляем студента в базу данных
+        database.push_back(student);
+
+        // Запускаем функцию для добавления студента
         addStudent(database);
 
         // Проверяем, что первый элемент в базе данных имеет major равный "Computer Science"
