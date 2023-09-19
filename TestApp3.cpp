@@ -79,11 +79,15 @@ private:
     }
 
     void testCreateReportEmptyDatabase() {
-        std::vector<Student> database;
+        std::vector<Student> database;  // Создаем пустую базу данных
 
+        // Удаляем файл отчета, если он существует, чтобы обеспечить пустое начальное состояние
+        std::remove("student_report.txt");
+
+        // Запускаем функцию для создания отчета
         createReport(database);
 
-        // Проверяем, что файл с отчетом не был создан
+        // Проверяем, что файл отчета не открыт (не существует)
         std::ifstream reportFile("student_report.txt");
         assert(!reportFile.is_open());
     }
