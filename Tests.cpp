@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 #include "DataBaseStudent.h"
 
 bool T_or_F_sort_name(std::vector<Student> database) {
