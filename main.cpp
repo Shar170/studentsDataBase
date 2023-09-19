@@ -1,3 +1,4 @@
+#ifndef TEST_MODE
 #include <iostream>
 #include <vector>
 #include <string>
@@ -119,3 +120,4 @@ int main() {
 
     return 0;
 }
+#endif // !TEST_MODE
