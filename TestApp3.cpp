@@ -83,7 +83,7 @@ private:
         addStudent(database);
 
         // Проверяем, что имя второго студента равно "Alice"
-        assert(database[1].name == "John Doe");
+        assert(database[1].name == "Alice");
     }
 
     void testCreateReportEmptyDatabase() {
