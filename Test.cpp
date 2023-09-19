@@ -39,17 +39,24 @@ class Test {
 		// Тест #3: Тестировании работы функции добавления студента
 		void Test3() {
 			std::vector<Student> database;
-			std::cout << "Запуск теста 3: Добавление студента...\n";
+			std::istringstream input("Иванов\n20\nМатематика\n4.5\n");  // Мокируем ввод
+
+			// Заменяем стандартный ввод на наш ввод
+			std::streambuf* originalCin = std::cin.rdbuf(input.rdbuf());
+
 			size_t initialSize = database.size();
 			addStudent(database);
+
+			// Восстанавливаем стандартный ввод
+			std::cin.rdbuf(originalCin);
+
 			if (database.size() == initialSize + 1) {
 				std::cout << "Тест 3 успешно пройден. Размер базы данных увеличен.\n\n";
 			}
 			else {
 				std::cout << "Тест 3 не пройден. Ожидалось увеличение размера базы данных.\n\n";
 			}
-
-		};
+		}
 
 		// Тест #4: Попытка вывести базу данных
 		void Test4() {
