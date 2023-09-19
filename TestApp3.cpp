@@ -64,22 +64,22 @@ private:
         reportFile.close();
     }
     void testExitProgram() {
-    std::stringstream output;
-    std::streambuf* origCoutBuffer = std::cout.rdbuf(output.rdbuf());
+        // Создаем поток, который будет захватывать выход программы
+        std::stringstream output;
+        std::streambuf* origCoutBuffer = std::cout.rdbuf(output.rdbuf());
 
-    // Симулируем выбор опции "0. Exit" в меню
-    std::istringstream input("0\n");
-    std::cin.rdbuf(input.rdbuf());
+        // Симулируем выбор опции "0. Exit" в меню
+        std::istringstream input("0\n");
+        std::cin.rdbuf(input.rdbuf());
 
-    // Запускаем вашу программу. В данном случае используется system(),
-    // но лучше бы использовать библиотеку для запуска программ из кода.
-    int exitCode = std::system("./a.out");
+        // Получаем код завершения
+        int exitCode = std::system("echo $?");
 
-    // Восстанавливаем стандартный вывод
-    std::cout.rdbuf(origCoutBuffer);
+        // Восстанавливаем стандартный вывод
+        std::cout.rdbuf(origCoutBuffer);
 
-    // Проверяем, что программа завершилась с кодом 0
-    assert(exitCode == 0);
+        // Проверяем, что программа завершилась с кодом 0
+        assert(exitCode == 0);
     }
 
 
