@@ -1,8 +1,9 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
 #include <limits>
-#pragma once
+#include <sstream>
 
 struct Student {
     std::string name;
@@ -11,62 +12,62 @@ struct Student {
     double gpa;
 };
 
-// Ôóíêöèÿ äëÿ äîáàâëåíèÿ ñòóäåíòà â áàçó äàííûõ
+// Функция для добавления студента в базу данных
 void addStudent(std::vector<Student>& database) {
     Student student;
 
-    // Çàïðàøèâàåì èìÿ ñòóäåíòà
-    std::cout << "Ââåäèòå èìÿ ñòóäåíòà: ";
-    std::cin.ignore(); // Î÷èùàåì áóôåð ââîäà
+    // Запрашиваем имя студента
+    std::cout << "Введите имя студента: ";
+    std::cin.ignore(); // Очищаем буфер ввода
     std::getline(std::cin, student.name);
 
-    // Çàïðàøèâàåì âîçðàñò ñòóäåíòà ñ îáðàáîòêîé îøèáîê
+    // Запрашиваем возраст студента с обработкой ошибок
     while (true) {
-        std::cout << "Ââåäèòå âîçðàñò ñòóäåíòà: ";
+        std::cout << "Введите возраст студента: ";
         if (std::cin >> student.age && student.age > 0) {
-            break; // Ââîä êîððåêòåí, âûõîäèì èç öèêëà
+            break; // Ввод корректен, выходим из цикла
         }
         else {
-            std::cout << "Îøèáêà: Ââåäèòå êîððåêòíûé âîçðàñò (öåëîå ÷èñëî > 0).\n";
-            std::cin.clear(); // Ñáðàñûâàåì ôëàã îøèáêè
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Î÷èùàåì áóôåð ââîäà
+            std::cout << "Ошибка: Введите корректный возраст (целое число > 0).\n";
+            std::cin.clear(); // Сбрасываем флаг ошибки
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очищаем буфер ввода
         }
     }
 
-    // Çàïðàøèâàåì ñïåöèàëüíîñòü ñòóäåíòà
-    std::cout << "Ââåäèòå ñïåöèàëüíîñòü ñòóäåíòà: ";
-    std::cin.ignore(); // Î÷èùàåì áóôåð ââîäà
+    // Запрашиваем специальность студента
+    std::cout << "Введите специальность студента: ";
+    std::cin.ignore(); // Очищаем буфер ввода
     std::getline(std::cin, student.major);
 
-    // Çàïðàøèâàåì ñðåäíèé áàëë ñòóäåíòà ñ îáðàáîòêîé îøèáîê
+    // Запрашиваем средний балл студента с обработкой ошибок
     while (true) {
-        std::cout << "Ââåäèòå ñðåäíèé áàëë ñòóäåíòà: ";
+        std::cout << "Введите средний балл студента: ";
         if (std::cin >> student.gpa && student.gpa > 0) {
-            break; // Ââîä êîððåêòåí, âûõîäèì èç öèêëà
+            break; // Ввод корректен, выходим из цикла
         }
         else {
-            std::cout << "Îøèáêà: Ââåäèòå êîððåêòíûé ñðåäíèé áàëë (÷èñëî).\n";
-            std::cin.clear(); // Ñáðàñûâàåì ôëàã îøèáêè
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Î÷èùàåì áóôåð ââîäà
+            std::cout << "Ошибка: Введите корректный средний балл (число).\n";
+            std::cin.clear(); // Сбрасываем флаг ошибки
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очищаем буфер ввода
         }
     }
 
     database.push_back(student);
-    std::cout << "Ñòóäåíò äîáàâëåí â áàçó äàííûõ.\n";
+    std::cout << "Студент добавлен в базу данных.\n";
 }
 
-// Ôóíêöèÿ äëÿ âûâîäà âñåõ ñòóäåíòîâ èç áàçû äàííûõ
+// Функция для вывода всех студентов из базы данных
 void displayStudents(const std::vector<Student>& database) {
-    std::cout << "Ñïèñîê ñòóäåíòîâ:\n";
+    std::cout << "Список студентов:\n";
     for (const Student& student : database) {
-        std::cout << "Èìÿ: " << student.name << "\n";
-        std::cout << "Âîçðàñò: " << student.age << "\n";
-        std::cout << "Ñïåöèàëüíîñòü: " << student.major << "\n";
-        std::cout << "Ñðåäíèé áàëë: " << student.gpa << "\n\n";
+        std::cout << "Имя: " << student.name << "\n";
+        std::cout << "Возраст: " << student.age << "\n";
+        std::cout << "Специальность: " << student.major << "\n";
+        std::cout << "Средний балл: " << student.gpa << "\n\n";
     }
 }
 
-// Ôóíêöèÿ äëÿ ðàñ÷¸òà ñðåäíåãî âîçðàñòà ñòóäåíòîâ
+// Функция для расчёта среднего возраста студентов
 double averageAgeStudents(const std::vector<Student>& database) {
     double averageAge = 0.0;
     if (!database.empty()) {
