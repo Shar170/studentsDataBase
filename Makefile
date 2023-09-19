@@ -5,7 +5,7 @@ LDFLAGS = -lgcov
 all: a.out
 
 a.out: Test.cpp DataBase.h
-	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 clean:
 	rm -f a.out *.gc* coverage.info
