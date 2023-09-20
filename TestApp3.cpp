@@ -8,7 +8,6 @@ public:
         testCreateReport();
         testCreateReportEmptyDatabase();
         testExitProgram();
-        // Добавьте вызовы других тестов по необходимости
     }
 
 private:
