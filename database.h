@@ -17,7 +17,7 @@ struct Student {
     std::string major;
     double gpa;
 };
-// Commit 2
+
 // Added a function to add a student to the database
 void addStudent(std::vector<Student>& database) {
     Student student;
@@ -34,7 +34,6 @@ void addStudent(std::vector<Student>& database) {
     std::cout << "Student added to the database.\n";
 }
 
-// Commit 3
 // Added a function to display all students from the database
 void displayStudents(const std::vector<Student>& database) {
     std::cout << "List of students:\n";
@@ -46,7 +45,6 @@ void displayStudents(const std::vector<Student>& database) {
     }
 }
 
-// Commit 4
 // Added a function to create a report and save it to a file
 void createReport(const std::vector<Student>& database) {
     std::ofstream outFile("student_report.txt"); // Open the file for writing
