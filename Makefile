@@ -9,3 +9,11 @@ a.out: Test.cpp DataBase.h
 
 clean:
 	rm -f a.out *.gc* coverage.info
+
+test: a.out
+	./a.out
+
+coverage: test
+	gcovr --xml -r . -o coverage.xml
+
+.PHONY: all clean test coverage
