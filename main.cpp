@@ -36,14 +36,26 @@ void displayStudents(const std::vector<Student>& database) {
     }
 }
 
+//Фукция для подсчета суммы всех средних баллов студентов
+double averageScoreSum(const std::vector<Student>& database) {
+    double sum = 0;
+
+    for (const Student& student : database) {
+        sum += student.gpa;
+    }
+    return sum;
+}
+
 int main() {
     std::vector<Student> database;
+    setlocale(LC_ALL, "Russian");
 
     int choice;
     do {
         std::cout << "Меню:\n";
         std::cout << "1. Добавить студента\n";
         std::cout << "2. Вывести список студентов\n";
+        std::cout << "3. Вывести сумму всех средних баллов студентов\n";
         std::cout << "0. Выход\n";
         std::cout << "Выберите действие: ";
         std::cin >> choice;
@@ -54,6 +66,9 @@ int main() {
                 break;
             case 2:
                 displayStudents(database);
+                break;
+            case 3:
+                std::cout << "Сумма всех средних баллов студентов: " << averageScoreSum(database) << std::endl;
                 break;
             case 0:
                 std::cout << "Выход из программы.\n";
