@@ -181,7 +181,7 @@ TEST(StudentTests, TestEditNameSkip){
 
 
 // Тест 3. Тест изменения возраста
-TEST(StudentTests, TestEditNameSkip){
+TEST(StudentTests, TestEditAge){
     Student student;
     int old_age = 21;
     std::string new_age = "22";
@@ -236,7 +236,7 @@ TEST(StudentTests, TestEditGPA){
 
 
 // Тест 8. Тест пропуска изменения среднего балла
-TEST(StudentTests, TestEditGPA){
+TEST(StudentTests, TestEditGPASkip){
     Student student;
     double old_gpa = 95.5;
     std::string new_gpa = "";
