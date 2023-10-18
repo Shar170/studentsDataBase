@@ -15,9 +15,12 @@ jobs:
         run: sudo apt install -y googletest libgtest-dev build-essential gcovr
       - name: make
         run: make
-      - name: execute
-        run: ./a.out
-        
+      - name: Generate coverage report
+        run: |
+          g++ --coverage -g -O0 -fprofile-arcs -ftest-coverage -I/usr/include/gtest -L/usr/lib/x86_64-linux-gnu main.cpp -lgtest -lpthread
+          chmod +x ./a.out
+          ./a.out
+          gcovr --xml coverage.cobertura.xml
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
