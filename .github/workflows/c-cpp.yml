@@ -2,7 +2,7 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "patch-1" ]
+    branches: [ "dicramble-patch-1" ]
   pull_request:
     branches: [ "main" ]
 
