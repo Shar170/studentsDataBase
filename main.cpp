@@ -39,29 +39,26 @@ void displayStudents(const std::vector<Student>& database) {
 int main() {
     std::vector<Student> database;
 
-    int choice;
-    do {
-        std::cout << "Меню:\n";
-        std::cout << "1. Добавить студента\n";
-        std::cout << "2. Вывести список студентов\n";
-        std::cout << "0. Выход\n";
-        std::cout << "Выберите действие: ";
-        std::cin >> choice;
-
-        switch (choice) {
+    for (int i = 1; i <= 5; i++)
+    {
+        bool result;
+        switch (i) {
             case 1:
-                addStudent(database);
-                break;
+                result = testFunction1(database);
             case 2:
-                displayStudents(database);
-                break;
-            case 0:
-                std::cout << "Выход из программы.\n";
-                break;
-            default:
-                std::cout << "Неверный выбор. Попробуйте снова.\n";
+                result = testFunction2(database);
+            case 3:
+                result = testFunction3(database);
+            case 4:
+                result = testFunction4(database);
+            case 5:
+                result = testFunction5(database);
         }
-    } while (choice != 0);
 
+        if (result == false) {
+            std::cerr << "TEST ERORR\n";
+            exit(1); 
+        }
+    }
     return 0;
 }
